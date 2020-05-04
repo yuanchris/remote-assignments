@@ -26,7 +26,11 @@ app.get('/getData', (req, res)=> {
         str = "Lack of Parameter";
     }   else if (isNaN(parseInt(number))){
         str = "Wrong Parameter";
-    }   else{
+    }   else if (number <= 0 || number % 1 != 0){
+        str = "please enter positive integer"
+    }
+    
+        else{
             for (let i = 1; i <= number; i++)
             {
                 sum += i;
@@ -48,3 +52,18 @@ app.get('/trackName', (req, res)=> {
     res.send(`username registered: ${user}`);
 })  
 
+function twoSum(nums, target) {
+    // your code here
+    for (let i = 0; i < nums.length; i++) {
+
+        for (let j = i + 1; j < nums.length; j++) {
+
+            // console.log("i,j:",i,j);
+
+            if (nums[i] + nums[j] === target)
+                return [i, j];
+        }
+    }        
+    }
+
+console.log(twoSum([2, 7, 11, 15], 9));
