@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,3 +37,44 @@
         </script>
     </body>
 </html>
+||||||| empty tree
+=======
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>myName</title>
+
+    </head>
+    <body>
+
+        
+            <h1>Welcome, {name}</h1>
+    
+            <p>Input your name</p>
+            <div>
+            
+                <input type="text" id="myName" placeholder="Input your name">
+                <button id="enter" type="button" onclick="entername()">Enter</button>
+                <p id="ajax"></p>
+            </div>
+   
+
+   
+ 
+
+        <script>
+            function entername(){
+                let myName = document.getElementById("myName").value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '/trackName?name=' + myName, true);
+                xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status == 200) {
+                    document.getElementById('ajax').innerHTML =  xhr.responseText;
+                }
+                };
+                xhr.send();
+            }
+        </script>
+    </body>
+</html>
+>>>>>>> 633073c3a50b372e9837dfacca24d44795b51c75

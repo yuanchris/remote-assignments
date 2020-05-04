@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,3 +29,36 @@
         </script>
 </body>
 </html>
+||||||| empty tree
+=======
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Count Sum</title>
+
+</head>
+<body>
+    <h1>Count number</h1>
+	<p>Enter a number, and it will count the value of "1+2+...+number"</p>
+
+    <div>
+        <input type="text" id="myText" placeholder="Input a value">
+        <button id="enter" type="button" onclick="count()">Enter</button>
+        <p id="ajax"></p>
+    </div>
+    <script>
+        function count(){
+            let enterNum = document.getElementById("myText").value;
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/getData?number=' + enterNum, true);
+            xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status == 200) {
+                document.getElementById('ajax').innerHTML = "The value is: " + xhr.responseText;
+            }
+            };
+            xhr.send();
+        }
+        </script>
+</body>
+</html>
+>>>>>>> 633073c3a50b372e9837dfacca24d44795b51c75
