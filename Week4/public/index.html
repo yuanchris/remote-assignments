@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>home</title>
+
+</head>
+<body>
+    <h1>Welcome</h1>
+	<p>Sign to our database</p>
+
+    <!-- <div>
+        <input type="text" id="myText" placeholder="Input a value">
+        <button id="enter" type="button" onclick="count()">Enter</button>
+        <p id="ajax"></p>
+    </div> -->
+
+    <h2>Sign in if you have account</h2>
+   <!-- <form class="sign in" action="/signIn" method="post"> -->
+    <div class="signin">
+        <input type="email" name="emailIn" placeholder="please enter email" required>
+        <input type="password" name="passwordIn" placeholder="please enter password" required>
+        <input type="submit" name="" value="sign in" onclick=signIn() >
+        <p id="ajaxIn"></p>
+    </div>
+
+    <h2>Sign up if you don't have account</h2>
+    <div class="signup">
+        <input type="email" name="emailUp" placeholder="please enter email" required>
+        <input type="password" name="passwordUp" placeholder="please enter password" required>
+        <input type="submit" name="" value="sign up" onclick=signUp()> 
+        <p id="ajaxUp"></p>
+    </div>
+
+    <!-- send message back in ajax-->
+    <script>
+        function signIn(){
+
+            let email = document.querySelector('[name="emailIn"]').value;
+            let password = document.querySelector('[name="passwordIn"]').value;
+            var params = "email=" + email +"&password=" + password; 
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/signIn', true);
+            xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status == 200) {
+                if (xhr.responseText == 'redirect') {window.location.href = `member.html?email=${email}`;}
+                else {document.getElementById('ajaxIn').innerHTML = xhr.responseText;}
+            }
+            };
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.send(params);
+        }
+        function signUp(){
+         
+            let email = document.querySelector('[name="emailUp"]').value;
+            let password = document.querySelector('[name="passwordUp"]').value;
+            
+            var params = 'email=' + email +'&password='+ password; 
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/signUp', true);
+            xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status == 200) {
+                if (xhr.responseText == 'redirect') {window.location.href = `member.html?email=${email}`;}
+                else {document.getElementById('ajaxUp').innerHTML = xhr.responseText;}
+            }
+            };
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.send(params);
+        }
+        </script>
+</body>
+</html>

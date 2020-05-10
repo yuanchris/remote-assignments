@@ -1,6 +1,6 @@
 const express = require('express'); //npm install express --save
 const app = express();
-//app.engine('html', require('ejs').renderFile); // npm install ejs
+//app.engine('html', require('ejs').renderFile); // npm install ejs for render html
 app.set('view engine', 'pug');
 
 var cookieParser = require('cookie-parser');
