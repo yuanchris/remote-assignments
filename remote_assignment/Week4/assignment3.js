@@ -6,24 +6,26 @@
 // npm install mysql
 // npm install express-session
 // npm install mysqldump
-
+// npm install pug --save
+// npm install ejs for render html
 const express = require('express'); 
 const mysql = require('mysql'); 
 const app = express();
 app.use(express.static('public'))
-
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile); 
 
 // ====== mysql dump===========  
-const mysqldump = require('mysqldump')
-mysqldump({
-    connection: {
-        host: 'localhost',
-        user: 'root',
-        password: '0410',
-        database: 'assignment',
-    },
-    dumpToFile: './dump.sql',
-});
+// const mysqldump = require('mysqldump')
+// mysqldump({
+//     connection: {
+//         host: 'localhost',
+//         user: 'root',
+//         password: '0410',
+//         database: 'assignment',
+//     },
+//     dumpToFile: './dump.sql',
+// });
 //===========================
 
 // ===== session =======
@@ -90,7 +92,31 @@ app.get('/createtable', (req, res) => {
 app.get('/', (req, res)=> {
     res.render('index.html');
 })
+// ===== test template=======
+app.get('/testpug', (req, res)=> {
+    res.render('test.pug');
+});  // only for test pug exist with html
 
+app.get('/testhtml', (req, res)=> {
+    res.render('../views/test2.html');
+});  // only for test 
+
+app.get('/member1', (req, res)=> {
+    res.render('../views/member1.html', {email: "abc@abc"});
+});  // only for test 
+
+app.get('/member2', (req, res)=> {
+    res.render('../views/member2.ejs',{
+        game: 'Final Fantasy VII',
+        category: '<p><b>Characters:</b></p>',
+        characters: ['Cloud', 'Aerith', 'Tifa', 'Barret']
+      });
+});  // only for test 
+
+app.get('/testhtmlinpug', (req, res)=> {
+    res.render('test3.pug');
+});  // only for test 
+// ============================
 //=====  post ========
 app.post('/signIn', (req, res)=> {
   

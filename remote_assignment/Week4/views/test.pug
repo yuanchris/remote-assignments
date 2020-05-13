@@ -1,0 +1,11 @@
+doctype html
+head
+  title myName
+
+  h1 Welcome, #{name}
+
+  p Input your name
+  div
+      input#myName(type='text', placeholder='Input your name')
+      button#enter(type='button', onclick='entername()') Enter
+      p#ajax

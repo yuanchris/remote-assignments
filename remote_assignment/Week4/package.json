@@ -5,11 +5,16 @@
   "main": "assignment3.js",
   "dependencies": {
     "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.2",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "for": "^0.1.0",
+    "html": "^1.0.0",
     "jinja-js": "^0.1.8",
     "mysql": "^2.18.1",
     "mysqldump": "^3.1.0",
+    "pug": "^2.0.4",
+    "render": "^0.1.4",
     "sql": "^0.78.0"
   },
   "devDependencies": {
